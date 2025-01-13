@@ -1,0 +1,161 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    background-color: black;
+}
+
+input{
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 200px;
+    margin: 10px 0;
+    border-radius: 30px;
+    padding: 10px;
+    border: 0;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+#drinkContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    max-width: min-content;
+    background-color: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card > h3{
+    color: rgb(255, 255, 255)
+}
+
+.card > img{
+    border-radius: 10px;
+}
+
+#caricamento{
+    display: none;
+    width: 80px;
+    height: 80px;
+    margin: 100px 0;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 0 5px 5px 5px;
+    border-radius: 50px;
+    animation: rotate 2s linear infinite;
+}
+
+.not-found{
+    min-width: 500px;
+    margin-top: 40%;
+}
+
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+#drink{
+    color: white;
+    width: 100%;
+    margin: 0;
+}
+
+#box-descrizione{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    background-color: rgba(255, 255, 255, 0.05);
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#box-descrizione>img{
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.box-ingrediente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    color: white;
+}
+
+.box-ingrediente:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.box-ingrediente:first-child{
+    border-radius: 20px 0 0 20px;
+}
+
+.box-ingrediente:last-child{
+    border-radius: 0 20px 20px 0;
+}
+
+.box-ingrediente p{
+    min-height: 54px;
+    margin-block: 0;
+}
+
+#box-descrizione>div>div{
+    display: flex;
+    justify-content: center;    
+}
+
+#box-descrizione{
+    text-align: center;
+}
+
+#descrizione{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#descrizione>p{
+    margin-top: 50px;
+}
+
+#box-ingredienti{
+    display: flex;
+    min-width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border-radius: 20px;
+}
+
+
+menu{
+    color: white;
+}
