@@ -1,26 +1,35 @@
 const search = document.querySelector("#search");
+const bottoni = document.querySelectorAll(".bottone")
 if (search) {
     const drinkContainer = document.querySelector("#drinkContainer");
     const caricamento = document.querySelector("#caricamento");
+    let url;
 
     let debounceTimer;
     let abortController;
 
     // Evento keyup con debounce
     search.addEventListener("keyup", (event) => {
-        nuovaChiamata()
+        url = "https://www.thecocktaildb.com/api/json/v1/1/" +
+        (search.value !== "" ? ("search.php?s=" + search.value) : "filter.php?a=Alcoholic");
+        nuovaChiamata(url)
     });
 
     // URL iniziale per i drink alcolici
-    const url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+    url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
 
     // Chiamata iniziale
     chiamata(url);
+    bottoni.forEach(bottone => {
+        bottone.addEventListener("click", (event)=>{
+            nuovaChiamata("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a="+bottone.value)
+        })
+    });
 }
 
 
 
-function nuovaChiamata() {
+function nuovaChiamata(url) {
     // Mostra il caricamento
     caricamento.style.display = "block";
 
@@ -32,10 +41,6 @@ function nuovaChiamata() {
     if (abortController) {
         abortController.abort();
     }
-
-    
-    const url = "https://www.thecocktaildb.com/api/json/v1/1/" +
-        (search.value !== "" ? ("search.php?s=" + search.value) : "filter.php?a=Alcoholic");
 
     chiamata(url); // Esegui la chiamata solo dopo il debounce
 }
@@ -133,7 +138,7 @@ if (drink) {
                 let ing = "strIngredient" + i
                 if (cocktail[ing] != null) {
                     const boxIngrediente = document.createElement("a")
-                    boxIngrediente.href = "/login"
+                    boxIngrediente.href = "/ingrediente.html?name=" + cocktail[ing]
                     boxIngrediente.classList = "box-ingrediente"
                     const ingredienti = document.createElement("img")
                     const nomeIngredienti = document.createElement("p")
