@@ -73,7 +73,7 @@ function chiamata(url) {
             const drinks = cocktail.drinks;
             drinks.forEach(drink => {
                 const card = document.createElement("a");
-                card.href = "/drink.html?name=" + drink.idDrink;
+                card.href = "./drink.html?name=" + drink.idDrink;
                 card.classList = "card";
 
                 const titolo = document.createElement("h3");
@@ -138,7 +138,7 @@ if (drink) {
                 let ing = "strIngredient" + i
                 if (cocktail[ing] != null) {
                     const boxIngrediente = document.createElement("a")
-                    boxIngrediente.href = "/ingrediente.html?name=" + cocktail[ing]
+                    boxIngrediente.href = "./ingrediente.html?name=" + cocktail[ing]
                     boxIngrediente.classList = "box-ingrediente"
                     const ingredienti = document.createElement("img")
                     const nomeIngredienti = document.createElement("p")
@@ -159,4 +159,15 @@ if (drink) {
 
 
         })
+}
+
+const ingrediente = document.querySelector("#ingrediente")
+
+if(ingrediente){
+    const url = new URL(document.URL);
+    const params = url.searchParams;
+    const APIurl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + params.get("name")
+    fetch(APIurl)
+        .then(response => console.log(response))
+        .then(ingredients => console.log(ingredients.ingredients[0]))
 }
