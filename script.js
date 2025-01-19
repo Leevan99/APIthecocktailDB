@@ -1,24 +1,79 @@
 const search = document.querySelector("#search");
 const bottoni = document.querySelectorAll(".bottone")
-let url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
-if (search) {
-    bottoni.forEach(bottone => {
-        bottone.classList = "bottone"
-        bottone.addEventListener("click", (event)=>{
-            nuovaChiamata("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a="+bottone.value)
+let url;
+
+function makeDropdown(urlItem) {
+    url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?" + urlItem + "=list"
+    const select = document.querySelector("#" + urlItem)
+    fetch(url)
+        .then(response => response.json())
+        .then(drinks => drinks.drinks)
+        .then(drinks => {
+            let item;
+            switch (urlItem) {
+                case "c":
+                    item = "strCategory"
+                    break
+                case "g":
+                    item = "strGlass"
+                    break
+                case "i":
+                    item = "strIngredient1"
+                    break
+                case "a":
+                    item = "strAlcoholic"
+                    break
+            }
+            drinks.forEach((drink) => {
+                const options = document.createElement("option")
+                options.classList = "filter"
+                options.value = drink[item]
+                options.label = drink[item]
+                select.appendChild(options)
+            })
         })
-    });
-    
+}
+
+
+
+if (search) {
+    const listUrl = ["c", "g", "i", "a"]
+    const select = document.querySelectorAll(".select")
+
+    async function dropdown(listUrl) {
+        await listUrl.forEach(urlItem => makeDropdown(urlItem))
+    }
+
+    dropdown(listUrl)
+
+    select.forEach((selectItem) => {
+        selectItem.addEventListener("change", (event) => {
+            search.value = ""
+            select.forEach(selectItems => {
+                if (selectItems != selectItem) {
+                    selectItems.value = ""
+                }
+            })
+            url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?" + selectItem.id + "=" + selectItem.value
+            nuovaChiamata(url)
+        })
+    })
+
+    url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+
     const drinkContainer = document.querySelector("#drinkContainer");
     const caricamento = document.querySelector("#caricamento");
     const searchBy = document.querySelector("#searchBy")
-    
-    searchBy.addEventListener("change", (event)=>{
+
+    searchBy.addEventListener("change", (event) => {
         search.value = ""
+        select.forEach(selectI => {
+            selectI.value = ""
+        })
         url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
-        if(searchBy.options[searchBy.selectedIndex].text == "first letter"){
+        if (searchBy.options[searchBy.selectedIndex].text == "first letter") {
             search.maxLength = 1
-        }else{
+        } else {
             search.maxLength = 50
         }
         search.placeholder = "Search by cocktail " + searchBy.options[searchBy.selectedIndex].text + "..."
@@ -31,13 +86,16 @@ if (search) {
 
     // Evento keyup con debounce
     search.addEventListener("keyup", (event) => {
+        select.forEach(selectI => {
+            selectI.value = ""
+        })
         url = "https://www.thecocktaildb.com/api/json/v1/1/" +
-        (search.value !== "" ? (searchBy.value + search.value) : "filter.php?a=Alcoholic");
+            (search.value !== "" ? (searchBy.value + search.value) : "filter.php?a=Alcoholic");
         nuovaChiamata(url)
     });
 
     // URL iniziale per i drink alcolici
-    
+
 
     // Chiamata iniziale
     chiamata(url);
@@ -118,7 +176,7 @@ function chiamata(url) {
                 card.classList = "card not-found";
                 const titolo = document.createElement("h3");
                 titolo.style.textAlign = "center";
-                titolo.textContent = "Nessun risultato trovato.";
+                titolo.textContent = (url.endsWith("=") ? "Nessun filtro selezionato" : "Nessun risultato trovato.");
                 card.appendChild(titolo);
                 drinkContainer.appendChild(card);
                 return;
@@ -188,7 +246,7 @@ if (drink) {
 
 const ingrediente = document.querySelector("#ingrediente")
 
-if(ingrediente){
+if (ingrediente) {
     const img = document.querySelector("#imgIngrediente")
     const desc = document.querySelector("#descIngrediente")
     const titolo = document.querySelector("#titIngrediente")
@@ -202,12 +260,12 @@ if(ingrediente){
             console.log(ingredient)
             img.src = "https://www.thecocktaildb.com/images/ingredients/" + ingredient.strIngredient + ".png"
             titolo.textContent = ingredient.strIngredient
-            if(ingredient.strDescription){
+            if (ingredient.strDescription) {
                 desc.textContent = ingredient.strDescription
-            }else{
+            } else {
                 desc.style.display = "none"
             }
-            
+
         })
 }
 

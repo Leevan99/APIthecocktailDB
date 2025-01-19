@@ -6,6 +6,7 @@ html {
   min-width: 100%;
   max-width: 100%;
   background-color: black;
+  color: white;
 }
 
 input {
@@ -153,13 +154,9 @@ input {
   border-radius: 20px;
 }
 
-div#menu {
+#menu {
   color: white;
   padding: 20px;
-}
-
-#menu > a {
-  margin: 10px;
 }
 
 .bottone {
@@ -180,12 +177,13 @@ div#menu {
   font-weight: 700;
 }
 
-#searchByLabel {
+.selectLabel {
   color: white;
   font-weight: 600;
+  margin-left: 1vw;
 }
 
-#searchBy {
+.select, .searchBy {
   background-color: black;
   color: white;
   font-weight: 600;
@@ -193,12 +191,27 @@ div#menu {
   font-size: medium;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  margin: 0 5px;
+  margin: 5px 5px;
 }
 
-#searchBy > option {
+.select > option {
   font-weight: 600;
 }
+
+.filterMenu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 
 #imgIngrediente {
   min-width: 20vw;
@@ -240,4 +253,57 @@ div#menu {
   box-shadow: 0 0 50px 2px rgba(255, 255, 255, 0.9) inset,
     0 0 10px 2px rgba(255, 255, 255, 0.9);
   font-weight: 700;
+}
+
+
+#filterTitle{
+  margin-top: 0;
+  text-align: center;
+}
+
+#or{
+  margin: 5px;
+}
+
+@media (max-width: 834px) {
+  #box-descrizione{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #box-descrizione img{
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  #box-ingredienti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .box-ingrediente:first-child {
+    border-radius: 20px;
+  }
+  
+  .box-ingrediente:last-child {
+    border-radius: 20px;
+  }
+
+  .box-ingrediente{
+    border-radius: 20px;
+    margin: 5px;
+  }
+
+  #descrizione>p{
+    margin: 20px;
+  }
+
 }

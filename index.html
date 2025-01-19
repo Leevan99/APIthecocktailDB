@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body id="body">
-        <div id="menu">
-            <button class="bottone" value="Non_Alcoholic">Non-Alcholic</button>
-            <button class="bottone" value="Alcoholic">Alcholic</button>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+    <div id="menu">
+        <h3 id="filterTitle">Filter by:</h3>
+        <div class="filterMenu">
+            <div class="">
+                <label class="selectLabel" for="categories">categories:</label>
+                <select class="select" name="categories" id="c">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="">
+                <label class="selectLabel" for="glasses">glasses:</label>
+                <select class="select" name="glasses" id="g">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="">
+                <label class="selectLabel" for="ingredients">ingredients:</label>
+                <select class="select" name="ingredients" id="i">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="">
+                <label class="selectLabel" for="alcholic">alcholic:</label>
+                <select class="select" name="alcholic" id="a">
+                </select>
+            </div>
         </div>
-        <div>
-            <label for="searchBy" id="searchByLabel">Search By:</label>
-            <select name="searchBy" id="searchBy">
-                <option value="search.php?s=">name</option>
-                <option value="search.php?f=">first letter</option>
-                <option value="filter.php?i=">ingredient</option>
-            </select>
-            <input type="text" id="search" placeholder="Search by cocktail name...">
-        </div>
-        <div id="drinkContainer">
-            <div id="caricamento"></div>
-        </div>
-        <script src="script.js" async defer></script>
-    </body>
+    </div>
+    <h2 id="or">or</h2>
+    <div class="searchBox">
+        <label class="selectLabel" for="searchBy" id="searchByLabel">Search By:</label>
+        <select class="searchBy" name="searchBy" id="searchBy">
+            <option value="search.php?s=">name</option>
+            <option value="search.php?f=">first letter</option>
+        </select>
+        <input type="text" id="search" placeholder="Search by cocktail name...">
+    </div>
+    <div id="drinkContainer">
+        <div id="caricamento"></div>
+    </div>
+    <script src="script.js" async defer></script>
+</body>
+
 </html>
