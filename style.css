@@ -1,188 +1,243 @@
-body,html{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 100%;
-    max-width: 100%;
-    background-color: black;
+body,
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
+  max-width: 100%;
+  background-color: black;
 }
 
-input{
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 200px;
-    margin: 10px 0;
-    border-radius: 30px;
-    padding: 10px;
-    border: 0;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+input {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 200px;
+  margin: 10px 0;
+  border-radius: 30px;
+  padding: 10px;
+  border: 0;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-#drinkContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+#drinkContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.card{
-    padding: 10px;
-    margin: 10px;
-    border-radius: 20px;
-    max-width: min-content;
-    background-color: rgba(255, 255, 255, 0.05);
-    cursor: pointer;
-    text-decoration: none;
+.card {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  max-width: min-content;
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.card > h3{
-    color: rgb(255, 255, 255)
+.card > h3 {
+  color: rgb(255, 255, 255);
 }
 
-.card > img{
-    border-radius: 10px;
+.card > img {
+  border-radius: 10px;
 }
 
-#caricamento{
-    display: none;
-    width: 80px;
-    height: 80px;
-    margin: 100px 0;
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
-    border-width: 0 5px 5px 5px;
-    border-radius: 50px;
-    animation: rotate 2s linear infinite;
+#caricamento {
+  display: none;
+  width: 80px;
+  height: 80px;
+  margin: 100px 0;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-width: 0 5px 5px 5px;
+  border-radius: 50px;
+  animation: rotate 2s linear infinite;
 }
 
-.not-found{
-    min-width: 500px;
-    margin-top: 40%;
+.not-found {
+  min-width: 500px;
+  margin-top: 40%;
 }
 
-
-
-@keyframes rotate{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-
-#drink{
-    color: white;
-    width: 100%;
-    margin: 0;
+#drink {
+  color: white;
+  width: 100%;
+  margin: 0;
 }
 
-#box-descrizione{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    background-color: rgba(255, 255, 255, 0.05);
-    max-width: 100%;
-    padding: 20px;
-    border-radius: 20px;
+#box-descrizione {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  background-color: rgba(255, 255, 255, 0.05);
+  max-width: 100%;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-#box-descrizione>img{
-    border-radius: 20px;
-    overflow: hidden;
-    margin-right: 10px;
-    object-fit: cover;
+#box-descrizione > img {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-right: 10px;
+  object-fit: cover;
 }
 
-.box-ingrediente{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    flex-wrap: wrap;
-    font-weight: 600;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.05);
-    text-decoration: none;
-    color: white;
+.box-ingrediente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  color: white;
 }
 
-.box-ingrediente:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+.box-ingrediente:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.box-ingrediente:first-child{
-    border-radius: 20px 0 0 20px;
+.box-ingrediente:first-child {
+  border-radius: 20px 0 0 20px;
 }
 
-.box-ingrediente:last-child{
-    border-radius: 0 20px 20px 0;
+.box-ingrediente:last-child {
+  border-radius: 0 20px 20px 0;
 }
 
-.box-ingrediente p{
-    min-height: 54px;
-    margin-block: 0;
+.box-ingrediente p {
+  min-height: 54px;
+  margin-block: 0;
 }
 
-#box-descrizione>div>div{
-    display: flex;
-    justify-content: center;    
+#box-descrizione > div > div {
+  display: flex;
+  justify-content: center;
 }
 
-#box-descrizione{
-    text-align: center;
+#box-descrizione {
+  text-align: center;
 }
 
-#descrizione{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#descrizione {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#descrizione>p{
-    margin-top: 50px;
+#descrizione > p {
+  margin-top: 50px;
 }
 
-#box-ingredienti{
-    display: flex;
-    min-width: 100%;
-    max-width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border-radius: 20px;
+#box-ingredienti {
+  display: flex;
+  min-width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 20px;
 }
 
-
-div#menu{
-    color: white;
-    padding: 20px;
+div#menu {
+  color: white;
+  padding: 20px;
 }
 
-#menu > a{
-    margin: 10px;
+#menu > a {
+  margin: 10px;
 }
 
-
-.bottone{
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.05);
-    cursor: pointer;
-    margin-left: 2px;
-    font-weight: 600;
+.bottone {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  margin-left: 2px;
+  font-weight: 600;
 }
 
-.bottone:hover{
-    color: black;
-    box-shadow: 0 0 50px 2px rgba(255, 255, 255, 0.9) inset,
+.bottone:hover {
+  color: black;
+  box-shadow: 0 0 50px 2px rgba(255, 255, 255, 0.9) inset,
     0 0 10px 2px rgba(255, 255, 255, 0.9);
-    font-weight: 700;
+  font-weight: 700;
 }
 
+#searchByLabel {
+  color: white;
+  font-weight: 600;
+}
 
+#searchBy {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  padding: 6px;
+  font-size: medium;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+#searchBy > option {
+  font-weight: 600;
+}
+
+#imgIngrediente {
+  min-width: 20vw;
+  max-width: 60vw;
+  max-height: 60vh;
+}
+
+#descIngrediente {
+  color: white;
+}
+
+#titIngrediente {
+  color: white;
+  text-align: center;
+}
+
+#ingrediente {
+  margin: 0 1vw;
+}
+
+#back-span {
+  display: flex;
+  width: 100%;
+}
+
+.back-button {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: 2px white solid;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: black;
+  box-shadow: 0 0 50px 2px rgba(255, 255, 255, 0.9) inset,
+    0 0 10px 2px rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}

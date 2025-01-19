@@ -1,9 +1,30 @@
 const search = document.querySelector("#search");
 const bottoni = document.querySelectorAll(".bottone")
+let url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
 if (search) {
+    bottoni.forEach(bottone => {
+        bottone.classList = "bottone"
+        bottone.addEventListener("click", (event)=>{
+            nuovaChiamata("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a="+bottone.value)
+        })
+    });
+    
     const drinkContainer = document.querySelector("#drinkContainer");
     const caricamento = document.querySelector("#caricamento");
-    let url;
+    const searchBy = document.querySelector("#searchBy")
+    
+    searchBy.addEventListener("change", (event)=>{
+        search.value = ""
+        url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+        if(searchBy.options[searchBy.selectedIndex].text == "first letter"){
+            search.maxLength = 1
+        }else{
+            search.maxLength = 50
+        }
+        search.placeholder = "Search by cocktail " + searchBy.options[searchBy.selectedIndex].text + "..."
+        search.focus()
+        nuovaChiamata(url)
+    })
 
     let debounceTimer;
     let abortController;
@@ -11,20 +32,15 @@ if (search) {
     // Evento keyup con debounce
     search.addEventListener("keyup", (event) => {
         url = "https://www.thecocktaildb.com/api/json/v1/1/" +
-        (search.value !== "" ? ("search.php?s=" + search.value) : "filter.php?a=Alcoholic");
+        (search.value !== "" ? (searchBy.value + search.value) : "filter.php?a=Alcoholic");
         nuovaChiamata(url)
     });
 
     // URL iniziale per i drink alcolici
-    url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+    
 
     // Chiamata iniziale
     chiamata(url);
-    bottoni.forEach(bottone => {
-        bottone.addEventListener("click", (event)=>{
-            nuovaChiamata("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a="+bottone.value)
-        })
-    });
 }
 
 
@@ -97,6 +113,15 @@ function chiamata(url) {
                 console.log("Richiesta annullata.");
             } else {
                 console.error("Errore nella fetch:", error);
+                // Mostra un messaggio se non ci sono risultati
+                const card = document.createElement("div");
+                card.classList = "card not-found";
+                const titolo = document.createElement("h3");
+                titolo.style.textAlign = "center";
+                titolo.textContent = "Nessun risultato trovato.";
+                card.appendChild(titolo);
+                drinkContainer.appendChild(card);
+                return;
             }
         });
 }
@@ -164,10 +189,29 @@ if (drink) {
 const ingrediente = document.querySelector("#ingrediente")
 
 if(ingrediente){
+    const img = document.querySelector("#imgIngrediente")
+    const desc = document.querySelector("#descIngrediente")
+    const titolo = document.querySelector("#titIngrediente")
     const url = new URL(document.URL);
     const params = url.searchParams;
-    const APIurl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + params.get("name")
+    const APIurl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=" + params.get("name")
     fetch(APIurl)
-        .then(response => console.log(response))
-        .then(ingredients => console.log(ingredients.ingredients[0]))
+        .then(response => response.json())
+        .then(ingredients => ingredients.ingredients[0])
+        .then(ingredient => {
+            console.log(ingredient)
+            img.src = "https://www.thecocktaildb.com/images/ingredients/" + ingredient.strIngredient + ".png"
+            titolo.textContent = ingredient.strIngredient
+            if(ingredient.strDescription){
+                desc.textContent = ingredient.strDescription
+            }else{
+                desc.style.display = "none"
+            }
+            
+        })
+}
+
+// Funzione per tornare indietro
+function goBack() {
+    window.history.back();
 }

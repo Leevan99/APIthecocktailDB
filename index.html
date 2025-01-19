@@ -13,7 +13,15 @@
             <button class="bottone" value="Non_Alcoholic">Non-Alcholic</button>
             <button class="bottone" value="Alcoholic">Alcholic</button>
         </div>
-        <input type="text" id="search" placeholder="Search by cocktail name...">
+        <div>
+            <label for="searchBy" id="searchByLabel">Search By:</label>
+            <select name="searchBy" id="searchBy">
+                <option value="search.php?s=">name</option>
+                <option value="search.php?f=">first letter</option>
+                <option value="filter.php?i=">ingredient</option>
+            </select>
+            <input type="text" id="search" placeholder="Search by cocktail name...">
+        </div>
         <div id="drinkContainer">
             <div id="caricamento"></div>
         </div>
