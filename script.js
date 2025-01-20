@@ -1,6 +1,11 @@
 const search = document.querySelector("#search");
 const bottoni = document.querySelectorAll(".bottone")
 let url;
+var link = document.createElement("link");
+link.rel = "icon";
+link.href = "/favicon.png"; // Cambia il percorso se necessario
+link.type = "image/png";
+document.head.appendChild(link);
 
 function makeDropdown(urlItem) {
     url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?" + urlItem + "=list"
@@ -78,7 +83,7 @@ if (search) {
         }
         search.placeholder = "Search by cocktail " + searchBy.options[searchBy.selectedIndex].text + "..."
         search.focus()
-        url = "https://www.thecocktaildb.com/api/json/v1/1/" +searchBy.value + search.value
+        url = "https://www.thecocktaildb.com/api/json/v1/1/" + searchBy.value + search.value
         nuovaChiamata(url)
     })
 
@@ -90,7 +95,7 @@ if (search) {
         select.forEach(selectI => {
             selectI.value = ""
         })
-        url = "https://www.thecocktaildb.com/api/json/v1/1/" +searchBy.value + search.value
+        url = "https://www.thecocktaildb.com/api/json/v1/1/" + searchBy.value + search.value
         nuovaChiamata(url)
     });
 
