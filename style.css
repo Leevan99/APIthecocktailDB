@@ -292,7 +292,7 @@ input {
   margin: 5px;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1320px) {
   #box-descrizione{
     display: flex;
     flex-direction: column;
