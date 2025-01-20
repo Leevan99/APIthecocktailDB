@@ -3,7 +3,7 @@ const bottoni = document.querySelectorAll(".bottone")
 let url;
 var link = document.createElement("link");
 link.rel = "icon";
-link.href = "/favicon.png"; // Cambia il percorso se necessario
+link.href = "./favicon.png"; // Cambia il percorso se necessario
 link.type = "image/png";
 document.head.appendChild(link);
 
