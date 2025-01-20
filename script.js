@@ -78,6 +78,7 @@ if (search) {
         }
         search.placeholder = "Search by cocktail " + searchBy.options[searchBy.selectedIndex].text + "..."
         search.focus()
+        url = "https://www.thecocktaildb.com/api/json/v1/1/" +searchBy.value + search.value
         nuovaChiamata(url)
     })
 
@@ -89,8 +90,7 @@ if (search) {
         select.forEach(selectI => {
             selectI.value = ""
         })
-        url = "https://www.thecocktaildb.com/api/json/v1/1/" +
-            (search.value !== "" ? (searchBy.value + search.value) : "filter.php?a=Alcoholic");
+        url = "https://www.thecocktaildb.com/api/json/v1/1/" +searchBy.value + search.value
         nuovaChiamata(url)
     });
 
